@@ -13,6 +13,7 @@
       <br /><br />
       <h1>Flaskr</h1>
       <br /><br />
+      <a class="btn btn-info" role="button" href="{{ url_for('search') }}">Search</a>
 
       {% for message in get_flashed_messages() %}
       <div class="flash alert alert-success col-sm-4" role="success">
