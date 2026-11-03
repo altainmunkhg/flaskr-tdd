@@ -51,6 +51,12 @@ def test_empty_db(client):
     assert b"No entries yet. Add some!" in rv.data
 
 
+def test_search(client):
+    response = client.get("/search/", query_string={"query": "flask"})
+
+    assert response.status_code == 200
+
+
 def test_login_logout(client):
     """Test login and logout using helper functions"""
     rv = login(client, app.config["USERNAME"], app.config["PASSWORD"])
@@ -85,4 +91,3 @@ def test_delete_message(client):
     rv = client.get("/delete/1")
     data = json.loads(rv.data)
     assert data["status"] == 1
-
